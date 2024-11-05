@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title><%= person.name %></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .person-detail {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <div class="person-detail card">
+        <div class="card-body">
+            <h2 class="card-title"><%= person.name %></h2>
+            <p class="card-text">Дата народження: <%= person.birth_date %></p>
+            <p class="card-text">Дата народження:
+                <%= new Date(person.birth_date).toLocaleDateString() %>
+            </p>
+
+            <% if (person.death_date) { %>
+                <p class="card-text">Дата смерті:
+                    <%= new Date(person.death_date).toLocaleDateString() %>
+                </p>
+            <% } else { %>
+                <p class="card-text">Дата смерті: -</p>
+            <% } %>
+
+            <p class="card-text">Біографія: <%= person.biography %></p>
+            <p class="card-text"><strong>Події:</strong></p>
+            <a href="/persons" class="btn btn-primary">Назад до персон</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Список осіб в історії України</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .person-item {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      width: 270px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2 class="text-center mt-4">Список осіб в історії України</h2>
+  <div class="row">
+    <% persons.forEach(person => { %>
+      <div class="col-md-4 d-flex justify-content-center">
+        <div class="person-item card text-center">
+          <% if (person.image) { %>
+            <img src="<%= person.image %>" alt="<%= person.name %>" class="card-img-top" style="max-width: 200px; height: 250px; margin: 0 auto;">
+          <% } %>
+          <div class="card-body">
+            <h5 class="card-title"><%= person.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <%= new Date(person.birth_date).toLocaleDateString() %>
+              -
+              <% if (person.death_date) { %>
+                <%= new Date(person.death_date).toLocaleDateString() %>
+              <% } else { %>
+
+              <% } %>
+            </h6>
+            <a href="/persons/<%= person._id %>" class="card-link">Переглянути</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
